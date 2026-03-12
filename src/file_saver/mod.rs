@@ -7,9 +7,9 @@ pub trait FileSaver: Send + Sync + 'static {
     type SendOutput;
     type Body: From<Bytes>;
 
-    fn send_file(
+    async fn send_file(
         &self,
         file_name: &str,
         body: Self::Body,
-    ) -> impl Future<Output = Result<Self::SendOutput, Self::Err>>;
+    ) -> Result<Self::SendOutput, Self::Err>;
 }

@@ -3,6 +3,7 @@ mod db_executor;
 use std::fmt::Debug;
 
 use axum::body::Bytes;
+pub use db_executor::DBExecutor;
 
 pub trait DBExecutorTrait: Send + Sync + 'static {
     type Err: Debug;

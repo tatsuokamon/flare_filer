@@ -9,14 +9,15 @@ use axum::{
     response::IntoResponse,
 };
 
-pub fn make_upload_handler<Saver, DB>()
--> impl Fn(Multipart, State<EngineState<Saver, DB>>) -> impl Future<Output = impl IntoResponse>
+pub async fn upload_handler<Saver, DB>(
+    State(state): State<EngineState<Saver, DB>>,
+    multi_part: Multipart,
+) -> impl IntoResponse
 where
     Saver: FileSaver,
     DB: DBExecutorTrait,
 {
-    |multi_part: Multipart, State(state): State<EngineState<Saver, DB>| {
-    }
+    "ok"
 }
 
 async fn upload_inner<Saver, DBExecutor>(

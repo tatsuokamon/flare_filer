@@ -9,5 +9,12 @@ impl DBExecutorTrait for DBExecutor {
     async fn save_file_info(&self, file_info: &Self::FileInfo) -> Result<(), Self::Err> {
         Ok(())
     }
-}
 
+    async fn ready_file_info(
+        &self,
+        file_name: &str,
+        bytes: &axum::body::Bytes,
+    ) -> Result<Self::FileInfo, Self::Err> {
+        Ok(())
+    }
+}
